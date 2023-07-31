@@ -19,15 +19,21 @@ class _MainAlarmListState extends ConsumerState<MainAlarmList> {
 
   @override
   Widget build(BuildContext context) {
+    final List<AlarmModel> alarms = ref.watch(AlarmProvider);
+
     return Scaffold(
-      backgroundColor: BACKGROUND_COLOR,
-      appBar: TitleBar(
-        onPressed: (){},
-        appBar: AppBar(),
-        title: Text('모여람'), titleIcon: Icons.alarm,
-      ),
-      body: AlarmList(title: '제발 완서어어어엉!!!', use: true, time: '12:00',),
-      bottomSheet: MainNav(),
-    );
+        backgroundColor: BACKGROUND_COLOR,
+        appBar: TitleBar(
+          onPressed: () {},
+          appBar: AppBar(),
+          title: Text('모여람'), titleIcon: Icons.alarm,
+        ),
+        body: AlarmList(alarms.map((e) => null) alarmGroupId: e.alarmGroupId,
+                title: e.title,
+                isLock: e.isLock,
+                dayOfWeek: e.dayOfWeek,
+                time: e.time,
+                toggle: e.toggle),
+        bottomSheet: MainNav(),);
   }
 }

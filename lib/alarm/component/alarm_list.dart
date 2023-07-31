@@ -6,16 +6,22 @@ import '../../common/const/colors.dart';
 class AlarmList extends StatelessWidget {
 
   const AlarmList({super.key,
-    required this.title,
 
-    required this.use,
+    required this.alarmGroupId,
+    required this.title,
+    required this.isLock,
+    required this.dayOfWeek,
     required this.time,
+    required this.toggle,
+
   });
 
+  final int alarmGroupId;
   final String title;
-
-  final bool use;
+  final bool isLock;
+  final List<String> dayOfWeek;
   final String time;
+  final String toggle;
 
   @override
   Widget build(BuildContext context) {

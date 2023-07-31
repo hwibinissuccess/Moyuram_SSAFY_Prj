@@ -8,6 +8,7 @@ import 'package:retrofit/retrofit.dart';
 part 'alarm_repository.g.dart';
 
 final alarmRepositoryProvider = Provider<AlarmRepository>((ref) {
+
   final dio = ref.watch(dioProvider);
 
   final repository = AlarmRepository(dio, baseUrl: 'http://$ip/alalrmgroups');

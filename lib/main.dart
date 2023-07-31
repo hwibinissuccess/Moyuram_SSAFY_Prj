@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:youngjun/main/view/settings.dart';
 import 'package:youngjun/user/view/login.dart';
@@ -14,7 +15,7 @@ import 'alarm/view/alarm_list_page.dart';
 
 void main() {
   runApp(
-    _Moyuram(),
+    ProviderScope(child: _Moyuram()),
   );
 }
 
