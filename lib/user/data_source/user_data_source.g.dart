@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'alarm_repository.dart';
+part of 'user_data_source.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'alarm_repository.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _AlarmRepository implements AlarmRepository {
-  _AlarmRepository(
+class _UserDataSource implements UserDataSource {
+  _UserDataSource(
     this._dio, {
     this.baseUrl,
   });
@@ -19,25 +19,25 @@ class _AlarmRepository implements AlarmRepository {
   String? baseUrl;
 
   @override
-  Future<AlarmModel> getAlarmList() async {
+  Future<User>? getUser() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<AlarmModel>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/',
+              '/loginSuccess',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = AlarmModel.fromJson(_result.data!);
+    final value = User.fromJson(_result.data!);
     return value;
   }
 

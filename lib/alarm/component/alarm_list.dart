@@ -8,20 +8,20 @@ class AlarmList extends StatelessWidget {
   const AlarmList({super.key,
 
     required this.alarmGroupId,
-    required this.title,
-    required this.isLock,
-    required this.dayOfWeek,
-    required this.time,
+    this.weekday = const [true, true, true, true, true, true, true],
+    required this.hour,
+    required this.minute,
     required this.toggle,
+    required this.title,
 
   });
 
   final int alarmGroupId;
+  final List<bool> weekday;
+  final int hour;
+  final int minute;
+  final bool toggle;
   final String title;
-  final bool isLock;
-  final List<String> dayOfWeek;
-  final String time;
-  final String toggle;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class AlarmList extends StatelessWidget {
           child: Card(
             margin: const EdgeInsets.only(right: 10, left: 10),
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -42,13 +42,13 @@ class AlarmList extends StatelessWidget {
                       Expanded(
                         child: Text(
                           title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16.0,
                           ),
                         ),
                       ),
                       BtnToggle(
-                        value: use,
+                        value: toggle,
                         onChanged: (bool value) {},
                       ),
                     ],
@@ -56,15 +56,15 @@ class AlarmList extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        time,
-                        style: TextStyle(
+                        '$hour : $minute',
+                        style: const TextStyle(
                           fontSize: 34.0,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 150,
                       ),
-                      Text(
+                      const Text(
                         'M T W T F S S',
                       )
                     ],
@@ -79,12 +79,12 @@ class AlarmList extends StatelessWidget {
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(
+                    side: const BorderSide(
                       color: MAIN_COLOR,
                       width: 2,
                     )),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 40),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 40),
                   child: Center(
                     child: Icon(
                       Icons.add,

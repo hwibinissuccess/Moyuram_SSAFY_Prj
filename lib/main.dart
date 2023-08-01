@@ -9,13 +9,17 @@ import 'package:youngjun/user/view/set_nickname.dart';
 // import 'package:youngjun/user/view/sign_in.dart';
 
 import 'alarm/component/alarm_list.dart';
+import 'alarm/view/alarm_detail_page.dart';
+import 'common/layout/alarm_middle_select.dart';
 import 'common/layout/main_nav.dart';
 import 'alarm/view/alarm_list_page.dart';
 
 
 void main() {
   runApp(
-    ProviderScope(child: _Moyuram()),
+    ProviderScope(
+
+        child: _Moyuram()),
   );
 }
 
@@ -44,8 +48,7 @@ class _Moyuram extends StatelessWidget {
       routes: {
           '/': (context) => Login(), // 초기 라우트로 카카오로그인페이지 설정
           // '/set_nickname' : (context) => SignIn(),
-          '/main_alarm_list' : (context) => MainAlarmList(),
-          '/arlat_list' : (context) => AlarmList(title: '하하하', use: false, time: '18:00',), // 알림보기
+          '/main_alarm_list' : (context) => AlarmDetailScreen(),
           // 알람 초대 confirm (모달창 주소필요없음)
           // 친구 초대 confirm (모달창 주소필요없음)
           // 친구목록리스트(nav)
