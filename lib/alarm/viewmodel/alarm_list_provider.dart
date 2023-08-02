@@ -5,14 +5,14 @@ import 'package:youngjun/alarm/repository/alarm_list_repository.dart';
 import 'package:youngjun/common/secure_storage/secure_storage.dart';
 
 
-final dioProvider =Provider<Dio>((ref) {
-
-  final dio = Dio();
-
-  final storage =ref.watch(secureStorageProvider);
-
-  return dio;
-});
+// final dioProvider =Provider<Dio>((ref) {
+//
+//   final dio = Dio();
+//
+//   final storage =ref.watch(secureStorageProvider);
+//
+//   return dio;
+// });
 
 final alarmListProvider =
 StateNotifierProvider<AlarmListNotifier, List<AlarmListModel>>((ref) {
@@ -44,9 +44,9 @@ class AlarmListNotifier extends StateNotifier<List<AlarmListModel>> {
     ];
   }
 
-  void changeToggle(int alarmGroupId) {
+  void changeToggle({required int alarmGroupId}) {
     state = state
-        .map((e) => e.alarmGroupId == alarmGroupId
+        .map((e) =>   e.alarmGroupId == alarmGroupId
         ? AlarmListModel(
       alarmGroupId: e.alarmGroupId,
       hour: e.hour,
@@ -57,4 +57,5 @@ class AlarmListNotifier extends StateNotifier<List<AlarmListModel>> {
         : e)
         .toList();
   }
+
 }

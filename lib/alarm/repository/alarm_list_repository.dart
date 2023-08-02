@@ -15,7 +15,8 @@ final alarmRepositoryProvider = Provider<AlarmListRepository>((ref){
 
   final dio = Dio();
 
-  final repository = AlarmListRepository(dio, baseUrl: 'http://$ip/alarmgroups');
+  // final repository = AlarmListRepository(dio, baseUrl: 'http://$ip/alarmgroups');
+  final repository = AlarmListRepository(dio, baseUrl: '$ip');
 
   return repository;
 
@@ -29,7 +30,5 @@ abstract class AlarmListRepository {
 
   // http://$ip/restaurant/
   @GET('/alarmgroups')
-  Future<AlarmListModel> getAlarmList({
-    required String alarmGroupId,
-  });
+  Future<AlarmListModel> getAlarmList();
 }

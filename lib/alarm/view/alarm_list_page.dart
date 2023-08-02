@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:youngjun/alarm/component/alarm_list.dart';
@@ -20,14 +21,21 @@ class _MainAlarmListState extends ConsumerState<MainAlarmList> {
   final ScrollController controller = ScrollController();
 
 
+  Future<AlarmListModel> getAlarmList() async{
+    final dio = Dio();
+
+    final repository = AlarmListRepository(dio, baseUrl: 'http://i9a502.p.ssafy.io:8080');
+
+    return repository.getAlarmList();
+  }
+
 
   @override
   Widget build(BuildContext context) {
 
+    final List<AlarmListModel> data = ref.watch(alarmListProvider);
 
-
-    final data = ref.watch(alarmListProvider);
-    
+    print(data.toList());
 
   return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
@@ -41,18 +49,19 @@ class _MainAlarmListState extends ConsumerState<MainAlarmList> {
         testBtn: null,
       ),
       body: ListView(
-        children: data
-            .map(
-              (e) => AlarmList(
-                alarmGroupId: e.alarmGroupId,
-                hour: e.hour,
-                minute: e.minute,
-                toggle: e.toggle,
-                title: e.title,
-              ),
-            )
-            .toList(),
-      ),
+          children: data
+              .map(
+                (e) => AlarmList(
+                  alarmGroupId: e.alarmGroupId,
+                  hour: e.hour,
+                  minute: e.minute,
+                  toggle: e.toggle,
+                  title: e.title,
+                ),
+              )
+              .toList(),
+        ),
+
       bottomSheet: MainNav(),
     );
   }

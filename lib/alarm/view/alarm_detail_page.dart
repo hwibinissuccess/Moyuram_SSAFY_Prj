@@ -23,7 +23,7 @@ class _AlarmDetailScreenState extends State<AlarmDetailScreen> {
         },
         appBar: AppBar(),
         titleIcon: Icons.alarm,
-        title: Text('모여람'),
+        title: '모여람',
       ),
       body: Column(
         children: [
