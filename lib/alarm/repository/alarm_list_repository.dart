@@ -29,7 +29,7 @@ abstract class AlarmListRepository {
 
   // http://$ip/restaurant/
   @GET('/alarmgroups')
-  Future<Alarm> getAlarmList({
-    required String id,
+  Future<AlarmListModel> getAlarmList({
+    required String alarmGroupId,
   });
 }

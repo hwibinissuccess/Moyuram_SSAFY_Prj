@@ -15,7 +15,7 @@ final dioProvider =Provider<Dio>((ref) {
 });
 
 final alarmListProvider =
-StateNotifierProvider<AlarmListNotifier, List<Alarm>>((ref) {
+StateNotifierProvider<AlarmListNotifier, List<AlarmListModel>>((ref) {
 
   final repository =ref.watch(alarmRepositoryProvider);
 
@@ -25,14 +25,14 @@ StateNotifierProvider<AlarmListNotifier, List<Alarm>>((ref) {
 
 });
 
-class AlarmListNotifier extends StateNotifier<List<Alarm>> {
+class AlarmListNotifier extends StateNotifier<List<AlarmListModel>> {
 
   final AlarmListRepository repository;
 
   AlarmListNotifier({required this.repository}) : super([]);
 
 
-  void addAlarm(Alarm alarm) {
+  void addAlarm(AlarmListModel alarm) {
     state = [...state, alarm];
   }
 
@@ -47,7 +47,7 @@ class AlarmListNotifier extends StateNotifier<List<Alarm>> {
   void changeToggle(int alarmGroupId) {
     state = state
         .map((e) => e.alarmGroupId == alarmGroupId
-        ? Alarm(
+        ? AlarmListModel(
       alarmGroupId: e.alarmGroupId,
       hour: e.hour,
       minute: e.minute,

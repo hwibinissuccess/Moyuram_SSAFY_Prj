@@ -22,7 +22,6 @@ class AlarmList extends StatelessWidget {
   final int minute;
   final bool toggle;
   final String title;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,7 +31,7 @@ class AlarmList extends StatelessWidget {
           child: Card(
             margin: const EdgeInsets.only(right: 10, left: 10),
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -42,7 +41,7 @@ class AlarmList extends StatelessWidget {
                       Expanded(
                         child: Text(
                           title,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16.0,
                           ),
                         ),
@@ -57,14 +56,14 @@ class AlarmList extends StatelessWidget {
                     children: [
                       Text(
                         '$hour : $minute',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 34.0,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 150,
                       ),
-                      const Text(
+                      Text(
                         'M T W T F S S',
                       )
                     ],
@@ -79,12 +78,12 @@ class AlarmList extends StatelessWidget {
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
-                    side: const BorderSide(
+                    side: BorderSide(
                       color: MAIN_COLOR,
                       width: 2,
                     )),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 40),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 40),
                   child: Center(
                     child: Icon(
                       Icons.add,

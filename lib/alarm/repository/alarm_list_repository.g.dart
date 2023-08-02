@@ -13,7 +13,7 @@ class _AlarmListRepository implements AlarmListRepository {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://i9a502.p.ssafy.io:8080/';
+    baseUrl ??= 'http://i9a502.p.ssafy.io:8080';
   }
 
   final Dio _dio;
@@ -21,13 +21,13 @@ class _AlarmListRepository implements AlarmListRepository {
   String? baseUrl;
 
   @override
-  Future<Alarm> getAlarmList({required id}) async {
+  Future<AlarmListModel> getAlarmList({required alarmGroupId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Alarm>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<AlarmListModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -39,7 +39,7 @@ class _AlarmListRepository implements AlarmListRepository {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Alarm.fromJson(_result.data!);
+    final value = AlarmListModel.fromJson(_result.data!);
     return value;
   }
 

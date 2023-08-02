@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:youngjun/alarm/component/alarm_list.dart';
+import 'package:youngjun/alarm/repository/alarm_list_repository.dart';
 import 'package:youngjun/common/const/colors.dart';
 import 'package:youngjun/common/layout/main_nav.dart';
 import 'package:youngjun/common/layout/title_bar.dart';
@@ -19,13 +20,16 @@ class _MainAlarmListState extends ConsumerState<MainAlarmList> {
   final ScrollController controller = ScrollController();
 
 
+
   @override
   Widget build(BuildContext context) {
+
+
+
     final data = ref.watch(alarmListProvider);
+    
 
-    print(ref.read(alarmListProvider.notifier).toString());
-
-    return Scaffold(
+  return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
       appBar: TitleBar(
         onPressed: () {
@@ -33,19 +37,20 @@ class _MainAlarmListState extends ConsumerState<MainAlarmList> {
         },
         appBar: AppBar(),
         titleIcon: Icons.alarm,
-        title: Text('모여람'),
+        title: '모여람',
+        testBtn: null,
       ),
       body: ListView(
         children: data
             .map(
               (e) => AlarmList(
-            alarmGroupId: e.alarmGroupId,
-            hour: e.hour,
-            minute: e.minute,
-            toggle: e.toggle,
-            title: e.title,
-          ),
-        )
+                alarmGroupId: e.alarmGroupId,
+                hour: e.hour,
+                minute: e.minute,
+                toggle: e.toggle,
+                title: e.title,
+              ),
+            )
             .toList(),
       ),
       bottomSheet: MainNav(),

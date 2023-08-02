@@ -6,7 +6,8 @@ part of 'alarm_list_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Alarm _$AlarmFromJson(Map<String, dynamic> json) => Alarm(
+AlarmListModel _$AlarmListModelFromJson(Map<String, dynamic> json) =>
+    AlarmListModel(
       alarmGroupId: json['alarmGroupId'] as int,
       weekday:
           (json['weekday'] as List<dynamic>?)?.map((e) => e as bool).toList() ??
@@ -17,7 +18,8 @@ Alarm _$AlarmFromJson(Map<String, dynamic> json) => Alarm(
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$AlarmToJson(Alarm instance) => <String, dynamic>{
+Map<String, dynamic> _$AlarmListModelToJson(AlarmListModel instance) =>
+    <String, dynamic>{
       'alarmGroupId': instance.alarmGroupId,
       'weekday': instance.weekday,
       'hour': instance.hour,
